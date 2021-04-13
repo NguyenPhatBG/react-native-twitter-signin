@@ -18,7 +18,7 @@
     return dispatch_get_main_queue();
 }
 
-BOOL authNotResolved = true;
+
 
 RCT_EXPORT_MODULE();
 
@@ -41,10 +41,9 @@ RCT_EXPORT_METHOD(logIn: (RCTPromiseResolveBlock)resolve
                                        @"userID":session.userID,
                                        @"email": requestedEmail,
                                        @"userName":session.userName};
-                if(authNotResolved){
+           
                     resolve(body);
-                    authNotResolved = false;
-                }
+           
             }];
         } else {
             reject(@"Error", @"Twitter signin error", error);
@@ -56,6 +55,8 @@ RCT_EXPORT_METHOD(logOut)
 {
     TWTRSessionStore *store = [[Twitter sharedInstance] sessionStore];
     NSString *userID = store.session.userID;
-    [store logOutUserID:userID];
+    if(userID) {
+       [store logOutUserID:userID];
+    }
 }
 @end
