@@ -1,11 +1,3 @@
-//
-//  TwitterSigninPackage.java
-//  TwitterSignin
-//
-//  Created by Justin Nguyen on 22/5/16.
-//  Updated at 12/17 by Maurilio Campos.
-//
-
 package com.goldenowl.twittersignin;
 
 import com.facebook.react.ReactPackage;
